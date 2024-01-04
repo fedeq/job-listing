@@ -1,9 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { add } from "../features/filters/filtersSlice";
+import { useFiltersActions } from "../hooks/useFiltersActions";
 
 function getImgUrl(name) {
-  return new URL(`${name}`, import.meta.url).href
+  return new URL(`${name}`, import.meta.url).href;
 }
 
 function JobItem({
@@ -22,8 +21,7 @@ function JobItem({
     tools,
   },
 }) {
-  const dispatch = useDispatch();
-  console.log(logo);
+  const { addNewFilter } = useFiltersActions();
 
   return (
     <div className="border-l-4 border-sky-600 rounded  flex shadow-lg justify-between p-6 mb-10 bg-white">
@@ -48,13 +46,13 @@ function JobItem({
       <div className="grow flex justify-end items-center">
         <div className="flex justify-center items-center">
           <span
-            onClick={() => dispatch(add({ type: "role", name: role }))}
+            onClick={() => addNewFilter({ type: "role", name: role })}
             className="badge-square ml-3 cursor-pointer"
           >
             {role}
           </span>
           <span
-            onClick={() => dispatch(add({ type: "level", name: level }))}
+            onClick={() => addNewFilter({ type: "level", name: level })}
             className="badge-square ml-3 cursor-pointer"
           >
             {level}
@@ -62,9 +60,7 @@ function JobItem({
           {languages.map((language) => (
             <span
               key={language}
-              onClick={() =>
-                dispatch(add({ type: "language", name: language }))
-              }
+              onClick={() => addNewFilter({ type: "language", name: language })}
               className="badge-square ml-3 cursor-pointer"
             >
               {language}

@@ -1,29 +1,33 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { clear, remove } from "../features/filters/filtersSlice";
+import { RemoveIcon } from "./RemoveIcon";
+import { useFiltersActions } from "../hooks/useFiltersActions";
+import { useAppSelector } from "../hooks/store";
 
 function Filters() {
-  const filters = useSelector((state) => state.filters.activeFilters);
-  const dispatch = useDispatch();
+  const { clearExistingFilters, removeExistingFilter } = useFiltersActions();
+  const filters = useAppSelector((state) => state.filters.activeFilters);
 
   if (filters.length === 0) return;
   return (
     <div className="shadow-lg mb-10 flex p-8 justify-between bg-white">
       <div className="flex">
         {filters?.map((filter) => (
-          <div
-            className="badge-square cursor-pointer ml-5"
-            onClick={() =>
-              dispatch(remove({ type: filter.type, name: filter.name }))
-            }
-          >
-            {filter.name}
-          </div>
+          <>
+            <div className="badge-square ml-5">{filter.name}</div>
+            <button
+              className="bg-cyan-800 h-full w-5 flex items-center justify-center"
+              onClick={() =>
+                removeExistingFilter({ type: filter.type, name: filter.name })
+              }
+            >
+              <RemoveIcon />
+            </button>
+          </>
         ))}
       </div>
       <div
         className="badge-square cursor-pointer"
-        onClick={() => dispatch(clear())}
+        onClick={clearExistingFilters}
       >
         Clear
       </div>

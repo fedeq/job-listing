@@ -6,19 +6,19 @@ export const filtersSlice = createSlice({
     activeFilters: [],
   },
   reducers: {
-    add: (state, action) => {
+    addFilter: (state, action) => {
       state.activeFilters = !hasFilter(state.activeFilters, action.payload)
         ? state.activeFilters.concat([
             { type: action.payload.type, name: action.payload.name },
           ])
         : state.activeFilters;
     },
-    remove: (state, action) => {
+    removeFilter: (state, action) => {
       state.activeFilters = state.activeFilters.filter(
         (filter) => filter.name !== action.payload.name
       );
     },
-    clear: (state) => {
+    clearFilters: (state) => {
       state.activeFilters = [];
     },
   },
@@ -32,6 +32,6 @@ const hasFilter = (activeFilters, newFilter) => {
   return false;
 };
 
-export const { add, remove, clear } = filtersSlice.actions;
+export const { addFilter, removeFilter, clearFilters } = filtersSlice.actions;
 
 export default filtersSlice.reducer;
