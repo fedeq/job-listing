@@ -4,15 +4,24 @@
 
 @layer components {
   .badge-primary {
-    @apply flex flex-col justify-center items-center bg-cyan-600 text-white text-xs font-semibold px-2.5 h-6 rounded-full;
+    @apply flex flex-col justify-center items-center bg-desaturated_dark_cyan text-white text-xs font-semibold px-2.5 h-6 rounded-full;
   }
   .badge-bold {
-    @apply flex flex-col justify-center items-center bg-cyan-800 text-white text-xs font-semibold px-2.5 h-6 rounded-full;
+    @apply flex flex-col justify-center items-center bg-very_dark_grayish_cyan text-white text-xs font-semibold px-2.5 h-6 rounded-full;
   }
   .badge-square {
-    @apply flex flex-col justify-center items-center bg-cyan-100 text-cyan-600 text-xs font-semibold px-2.5 h-6 rounded-sm;
+    @apply flex flex-col justify-center items-center bg-light_grayish_cyan_background text-desaturated_dark_cyan text-xs font-semibold px-2.5 h-6 rounded-sm;
   }
 }
+
+/* - Desaturated Dark Cyan: hsl(180, 29%, 50%)
+
+### Neutral
+
+- Light Grayish Cyan (Background): hsl(180, 52%, 96%)
+- Light Grayish Cyan (Filter Tablets): hsl(180, 31%, 95%)
+- Dark Grayish Cyan: hsl(180, 8%, 52%)
+- Very Dark Grayish Cyan: hsl(180, 14%, 20%) */
 
 body {
   margin: 0;

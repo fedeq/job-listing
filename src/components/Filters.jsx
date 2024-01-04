@@ -3,19 +3,19 @@ import { RemoveIcon } from "./RemoveIcon";
 import { useFiltersActions } from "../hooks/useFiltersActions";
 import { useFilters } from "../hooks/useFilters";
 
-function Filters() {
+export function Filters() {
   const { clearExistingFilters, removeExistingFilter } = useFiltersActions();
   const { filters } = useFilters();
 
   if (filters.length === 0) return;
   return (
-    <div className="shadow-lg mb-10 flex p-8 justify-between bg-white">
+    <div className="container mx-auto shadow-lg flex p-8 justify-between bg-white -mt-10 rounded-md">
       <div className="flex">
         {filters?.map((filter) => (
           <React.Fragment key={filter.name}>
-            <div className="badge-square ml-5">{filter.name}</div>
+            <div className="badge-square ml-5 font-bold">{filter.name}</div>
             <button
-              className="bg-cyan-800 h-full w-5 flex items-center justify-center"
+              className="bg-desaturated_dark_cyan h-full w-6 flex items-center justify-center text-white rounded-r-sm hover:bg-very_dark_grayish_cyan"
               onClick={() =>
                 removeExistingFilter({ type: filter.type, name: filter.name })
               }
@@ -26,13 +26,11 @@ function Filters() {
         ))}
       </div>
       <div
-        className="badge-square cursor-pointer"
+        className="text-dark_grayish_cyan cursor-pointer"
         onClick={clearExistingFilters}
       >
-        Clear
+        <strong>Clear</strong>
       </div>
     </div>
   );
 }
-
-export default Filters;

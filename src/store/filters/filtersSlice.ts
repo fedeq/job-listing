@@ -27,7 +27,6 @@ export const filtersSlice = createSlice({
 });
 
 const hasFilter = (activeFilters: Filter[], newFilter: Filter) => {
-  console.log(`checking if ${newFilter.name} is in ${activeFilters}`);
   return activeFilters.some(
     (filter) => filter.type === newFilter.type && filter.name === newFilter.name
   );

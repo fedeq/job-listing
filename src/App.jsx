@@ -1,9 +1,12 @@
 import "./App.css";
-import JobsList from "./components/JobsList";
-import Filters from "./components/Filters";
+import { JobsList } from "./components/JobsList";
+import { Filters } from "./components/Filters";
+import { Header } from "./components/Header";
+
 function App() {
   return (
-    <div className="App p-10 bg-teal-50 min-h-screen">
+    <div className="App bg-light_grayish_cyan_background min-h-screen">
+      <Header />
       <Filters />
       <JobsList />
     </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import { useFiltersActions } from "../hooks/useFiltersActions";
 import { Job } from "./JobsList";
 
@@ -15,7 +14,7 @@ function JobItem({ job }: { job: Job }) {
         <img className="mr-6" src={getImgUrl(job.logo)} alt="logo" />
         <div className="flex flex-col justify-between">
           <div className="flex">
-            <span className="mr-2 flex flex-col justify-center items-center leading-6 text-cyan-600 font-bold">
+            <span className="mr-2 flex flex-col justify-center items-center leading-6 text-desaturated_dark_cyan font-bold">
               {job.company}
             </span>
             {job.new ? <span className="badge-primary ml-1">NEW!</span> : ""}
@@ -25,7 +24,7 @@ function JobItem({ job }: { job: Job }) {
               ""
             )}
           </div>
-          <div className="text-left font-bold text-slate-700">
+          <div className="text-left font-bold text-very_dark_grayish_cyan cursor-pointer hover:text-desaturated_dark_cyan">
             {job.position}
           </div>
           <ul className="flex flex-row justify-between text-slate-500 font-semibold space-x-3">
@@ -37,30 +36,44 @@ function JobItem({ job }: { job: Job }) {
       </div>
       <div className="grow flex justify-end items-center">
         <div className="flex justify-center items-center">
-          <span
+          <JobItemBadge
             onClick={() => addNewFilter({ type: "role", name: job.role })}
-            className="badge-square ml-3 cursor-pointer"
           >
             {job.role}
-          </span>
-          <span
+          </JobItemBadge>
+          <JobItemBadge
             onClick={() => addNewFilter({ type: "level", name: job.level })}
-            className="badge-square ml-3 cursor-pointer"
           >
             {job.level}
-          </span>
+          </JobItemBadge>
           {job.languages.map((language) => (
-            <span
+            <JobItemBadge
               key={language}
               onClick={() => addNewFilter({ type: "language", name: language })}
-              className="badge-square ml-3 cursor-pointer"
             >
               {language}
-            </span>
+            </JobItemBadge>
           ))}
         </div>
       </div>
     </div>
+  );
+}
+
+function JobItemBadge({
+  children,
+  onClick,
+}: {
+  children: string;
+  onClick: () => void;
+}) {
+  return (
+    <span
+      onClick={onClick}
+      className="badge-square ml-3 cursor-pointer font-bold hover:bg-desaturated_dark_cyan hover:text-white"
+    >
+      {children}
+    </span>
   );
 }
 

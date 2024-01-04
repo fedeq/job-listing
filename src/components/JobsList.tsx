@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import data from "../data.json";
 import JobItem from "./JobItem";
 import { useFilters } from "../hooks/useFilters";
@@ -25,18 +25,16 @@ const useJobs = () => {
   return { jobs };
 };
 
-function JobsList() {
+export function JobsList() {
   const { jobs } = useJobs();
   return (
-    <div className="mt-10">
+    <div className="container mx-auto py-10">
       {jobs.map((job) => (
         <JobItem key={job.id} job={job} />
       ))}
     </div>
   );
 }
-
-export default JobsList;
 
 export interface Job {
   id: number;
