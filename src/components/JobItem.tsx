@@ -57,6 +57,14 @@ function JobItem({ job }: { job: Job }) {
             {language}
           </JobItemBadge>
         ))}
+        {job.tools.map((tool) => (
+          <JobItemBadge
+            key={tool}
+            onClick={() => addNewFilter({ type: "tool", name: tool })}
+          >
+            {tool}
+          </JobItemBadge>
+        ))}
       </div>
     </div>
   );

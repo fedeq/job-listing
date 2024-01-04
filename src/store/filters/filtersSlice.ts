@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type Filter = {
-  type: "language" | "role" | "level";
+  type: "language" | "role" | "level" | "tool";
   name: string;
 };
 
