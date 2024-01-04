@@ -14,23 +14,21 @@ export function Filters() {
       } container mx-auto px-8 -mt-10`}
     >
       <div
-        className={`h-auto flex container mx-auto shadow-lg p-6 justify-between bg-white rounded-md`}
+        className={`gap-4 h-auto flex container mx-auto shadow-lg p-6 justify-between bg-white rounded-md`}
       >
-        <div className="flex">
+        <div className="flex flex-wrap gap-4">
           {filters?.map((filter) => (
-            <React.Fragment key={filter.name}>
-              <div className="badge-square ml-5 first:ml-0 font-bold">
-                {filter.name}
-              </div>
+            <div key={filter.name} className="flex">
+              <div className="badge-square font-bold">{filter.name}</div>
               <button
-                className="bg-desaturated_dark_cyan h-full w-6 flex items-center justify-center text-white rounded-r-sm hover:bg-very_dark_grayish_cyan"
+                className="bg-desaturated_dark_cyan h-auto w-6 flex items-center justify-center text-white rounded-r-sm hover:bg-very_dark_grayish_cyan"
                 onClick={() =>
                   removeExistingFilter({ type: filter.type, name: filter.name })
                 }
               >
                 <RemoveIcon />
               </button>
-            </React.Fragment>
+            </div>
           ))}
         </div>
         <div
