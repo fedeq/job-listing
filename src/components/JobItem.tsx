@@ -9,7 +9,11 @@ function JobItem({ job }: { job: Job }) {
   const { addNewFilter } = useFiltersActions();
 
   return (
-    <div className="border-l-4 border-sky-600 rounded  flex shadow-lg justify-between p-6 mb-10 bg-white w-full">
+    <div
+      className={`${
+        job.featured ? "border-l-4 border-desaturated_dark_cyan rounded" : ""
+      }  flex shadow-lg justify-between p-6 mb-10 bg-white w-full hover:shadow-2xl transition-all`}
+    >
       <div className="flex">
         <img className="mr-6" src={getImgUrl(job.logo)} alt="logo" />
         <div className="flex flex-col justify-between">
