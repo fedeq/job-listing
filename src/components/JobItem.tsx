@@ -12,7 +12,7 @@ function JobItem({ job }: { job: Job }) {
     <div
       className={`${
         job.featured ? "border-l-4 border-desaturated_dark_cyan rounded" : ""
-      } flex flex-col xl:flex-row shadow-lg justify-between p-6 pt-8 md:pt-6 mb-10 bg-white w-full hover:shadow-2xl transition-all animate-reveal animation-timeline-view animation-range-entry relative`}
+      } flex flex-col xl:flex-row shadow-lg justify-between p-6 pt-8 md:pt-6 mb-10 bg-white w-full hover:shadow-2xl transition-all animate-reveal animation-timeline-view animation-range-entry relative gap-4`}
     >
       <div className="flex">
         <img
@@ -38,7 +38,8 @@ function JobItem({ job }: { job: Job }) {
           </ul>
         </div>
       </div>
-      <div className="flex justify-start items-center flex-wrap gap-4 mt-4">
+      <div className="h-[1px] w-full bg-desaturated_dark_cyan xl:hidden" />
+      <div className="flex justify-start items-center flex-wrap gap-4">
         <JobItemBadge
           onClick={() => addNewFilter({ type: "role", name: job.role })}
         >
