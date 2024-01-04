@@ -1,30 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const filtersSlice = createSlice({
-  name: 'filters',
+  name: "filters",
   initialState: {
     activeFilters: [],
   },
   reducers: {
     add: (state, action) => {
-      state.activeFilters = !hasFilter(state.activeFilters, action.payload) ? state.activeFilters.concat([{type: action.payload.type, name: action.payload.name}]) : state.activeFilters
+      state.activeFilters = !hasFilter(state.activeFilters, action.payload)
+        ? state.activeFilters.concat([
+            { type: action.payload.type, name: action.payload.name },
+          ])
+        : state.activeFilters;
     },
     remove: (state, action) => {
-      state.activeFilters = state.activeFilters.filter(filter => filter.name !== action.payload.name)
+      state.activeFilters = state.activeFilters.filter(
+        (filter) => filter.name !== action.payload.name
+      );
     },
     clear: (state) => {
-      state.activeFilters = []
-    }
+      state.activeFilters = [];
+    },
   },
-})
+});
 
 const hasFilter = (activeFilters, newFilter) => {
-  for(let filter of activeFilters) {
-    if(filter.type === newFilter.type && filter.name === newFilter.name) return true
+  for (let filter of activeFilters) {
+    if (filter.type === newFilter.type && filter.name === newFilter.name)
+      return true;
   }
-  return false
-}
+  return false;
+};
 
-export const { add, remove, clear } = filtersSlice.actions
+export const { add, remove, clear } = filtersSlice.actions;
 
-export default filtersSlice.reducer
+export default filtersSlice.reducer;
