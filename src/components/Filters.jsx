@@ -7,9 +7,12 @@ export function Filters() {
   const { clearExistingFilters, removeExistingFilter } = useFiltersActions();
   const { filters } = useFilters();
 
-  if (filters.length === 0) return;
   return (
-    <div className="container mx-auto shadow-lg flex p-8 justify-between bg-white -mt-10 rounded-md">
+    <div
+      className={`${
+        filters.length === 0 ? "h-0 p-0 hidden" : "h-auto flex"
+      } container mx-auto shadow-lg p-8 justify-between bg-white -mt-10 rounded-md transition-all`}
+    >
       <div className="flex">
         {filters?.map((filter) => (
           <React.Fragment key={filter.name}>
