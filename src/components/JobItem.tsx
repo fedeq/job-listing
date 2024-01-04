@@ -9,7 +9,7 @@ function JobItem({ job }: { job: Job }) {
   const { addNewFilter } = useFiltersActions();
 
   return (
-    <div className="border-l-4 border-sky-600 rounded  flex shadow-lg justify-between p-6 mb-10 bg-white">
+    <div className="border-l-4 border-sky-600 rounded  flex shadow-lg justify-between p-6 mb-10 bg-white w-full">
       <div className="flex">
         <img className="mr-6" src={getImgUrl(job.logo)} alt="logo" />
         <div className="flex flex-col justify-between">
@@ -34,7 +34,7 @@ function JobItem({ job }: { job: Job }) {
           </ul>
         </div>
       </div>
-      <div className="grow flex justify-end items-center">
+      <div className="flex justify-end items-center">
         <div className="flex justify-center items-center">
           <JobItemBadge
             onClick={() => addNewFilter({ type: "role", name: job.role })}
