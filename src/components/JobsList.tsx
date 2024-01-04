@@ -28,7 +28,7 @@ const useJobs = () => {
 export function JobsList() {
   const { jobs } = useJobs();
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto p-8">
       {jobs.map((job) => (
         <JobItem key={job.id} job={job} />
       ))}

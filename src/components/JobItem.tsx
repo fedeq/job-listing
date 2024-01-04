@@ -12,10 +12,14 @@ function JobItem({ job }: { job: Job }) {
     <div
       className={`${
         job.featured ? "border-l-4 border-desaturated_dark_cyan rounded" : ""
-      }  flex shadow-lg justify-between p-6 mb-10 bg-white w-full hover:shadow-2xl transition-all`}
+      } flex shadow-lg justify-between p-6 mb-10 bg-white w-full hover:shadow-2xl transition-all animate-reveal animation-timeline-view animation-range-entry`}
     >
       <div className="flex">
-        <img className="mr-6" src={getImgUrl(job.logo)} alt="logo" />
+        <img
+          className="mr-6 w-auto h-full"
+          src={getImgUrl(job.logo)}
+          alt="logo"
+        />
         <div className="flex flex-col justify-between">
           <div className="flex">
             <span className="mr-2 flex flex-col justify-center items-center leading-6 text-desaturated_dark_cyan font-bold">
