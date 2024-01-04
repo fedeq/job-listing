@@ -1,18 +1,18 @@
 import React from "react";
 import { RemoveIcon } from "./RemoveIcon";
 import { useFiltersActions } from "../hooks/useFiltersActions";
-import { useAppSelector } from "../hooks/store";
+import { useFilters } from "../hooks/useFilters";
 
 function Filters() {
   const { clearExistingFilters, removeExistingFilter } = useFiltersActions();
-  const filters = useAppSelector((state) => state.filters.activeFilters);
+  const { filters } = useFilters();
 
   if (filters.length === 0) return;
   return (
     <div className="shadow-lg mb-10 flex p-8 justify-between bg-white">
       <div className="flex">
         {filters?.map((filter) => (
-          <>
+          <React.Fragment key={filter.name}>
             <div className="badge-square ml-5">{filter.name}</div>
             <button
               className="bg-cyan-800 h-full w-5 flex items-center justify-center"
@@ -22,7 +22,7 @@ function Filters() {
             >
               <RemoveIcon />
             </button>
-          </>
+          </React.Fragment>
         ))}
       </div>
       <div

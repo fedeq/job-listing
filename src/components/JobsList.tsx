@@ -1,21 +1,14 @@
 import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
 import data from "../data.json";
 import JobItem from "./JobItem";
-
-const useFilters = () => {
-  const filters = useSelector((state) => state.filters.activeFilters);
-
-  return { filters };
-};
+import { useFilters } from "../hooks/useFilters";
 
 const useJobs = () => {
   const { filters } = useFilters();
 
-  const jobs = useMemo(() => {
+  const jobs: Job[] = useMemo(() => {
     let jobs = data;
     for (let filter of filters) {
-      console.log(filter);
       if (filter.type === "role") {
         jobs = jobs.filter((job) => job.role === filter.name);
       }
@@ -34,14 +27,47 @@ const useJobs = () => {
 
 function JobsList() {
   const { jobs } = useJobs();
-
   return (
     <div className="mt-10">
       {jobs.map((job) => (
-        <JobItem key={job.id} data={job} />
+        <JobItem key={job.id} job={job} />
       ))}
     </div>
   );
 }
 
 export default JobsList;
+
+export interface Job {
+  id: number;
+  company: string;
+  logo: string;
+  new: boolean;
+  featured: boolean;
+  position: string;
+  role: Role;
+  level: Level;
+  postedAt: string;
+  contract: Contract;
+  location: string;
+  languages: string[];
+  tools: string[];
+}
+
+export enum Contract {
+  Contract = "Contract",
+  FullTime = "Full Time",
+  PartTime = "Part Time",
+}
+
+export enum Level {
+  Junior = "Junior",
+  Midweight = "Midweight",
+  Senior = "Senior",
+}
+
+export enum Role {
+  Backend = "Backend",
+  Frontend = "Frontend",
+  Fullstack = "Fullstack",
+}
